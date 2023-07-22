@@ -15,7 +15,7 @@ const menus = [
   },
   {
     name: "Analytics",
-    path: "home",
+    path: "/home",
     isActive: true,
     icon: <FaChartBar width={18} className="text-gray-600" />,
   },
