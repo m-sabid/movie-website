@@ -10,6 +10,10 @@ import SocialLinksForHeroSection from "@/components/pages/HomePage/SocialLinksFo
 import JoinTelegram from "@/components/shared/JoinTelegram";
 import MovieCategoryHeader from "@/components/shared/MovieCategoryHeader";
 import { AllMoviesContext } from "@/providers/data/AllMoviesData";
+import MainNav from "@/components/pages/HomePage/MainNav";
+
+
+
 
 export default function Home() {
   const { movieData, filmIndustries } = useContext(AllMoviesContext);
@@ -61,6 +65,7 @@ export default function Home() {
   return (
     <>
       <div className="min-h-screen">
+        <MainNav />
         <HeroSection />
         <div className="absolute text-center mt-20 w-full">
           <SearchBarOnHeroSection onSearch={handleSearch} />

@@ -81,12 +81,12 @@ const MainNav = () => {
           </button>
         </div>
         <div className="flex-1">
-          <Link href={'/'} className="btn btn-ghost normal-case text-xl">
+          <Link href={"/"} className="btn btn-ghost normal-case text-xl">
             J4B MOVIES <sup className="badge badge-primary">Beta v0.1</sup>
           </Link>
         </div>
         <div className="flex-none">
-          <button className="btn btn-square btn-ghost">
+          <Link href={"/dashboard"} className="btn btn-square btn-ghost">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -100,7 +100,7 @@ const MainNav = () => {
                 d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
               ></path>
             </svg>
-          </button>
+          </Link>
         </div>
       </div>
     </>

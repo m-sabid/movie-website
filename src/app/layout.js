@@ -1,12 +1,11 @@
-// 
 import "./globals.css";
 import { Inter } from "next/font/google";
-import MainNav from "@/components/pages/HomePage/MainNav";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import AllMoviesProvider from "@/providers/data/AllMoviesData";
+import ReactQueryProviders from "@/providers/ReactQuerySetup/ReactQueryProviders";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,16 +16,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <AllMoviesProvider>
-      <html lang="en">
-        <body className={inter.className}>
-          <MainNav />
-          {children}
-          <a className="bg-red-500 my-4 block mx-auto text-center p-4 rounded-md">
-            Download
-          </a>
-        </body>
-      </html>
-    </AllMoviesProvider>
+    <html lang="en">
+      <body className={inter.className}>
+        <ReactQueryProviders>
+          <AllMoviesProvider>{children}</AllMoviesProvider>
+        </ReactQueryProviders>
+      </body>
+    </html>
   );
 }
