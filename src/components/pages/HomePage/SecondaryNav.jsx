@@ -18,11 +18,15 @@ const SecondaryNav = ({ onSearch }) => {
 
   return (
     <div
-      className={`px-4 py-2 transition-colors min-w-full ${
+      className={`px-4 py-2 transition-colors w-full ${
         isSticky ? "bg-gray-800 fixed top-0 z-50" : "bg-gray-800 bg-opacity-60"
       }`}
     >
-      <ul className="flex gap-3 text-white items-center">
+      <ul
+        className={`flex gap-3 text-white items-center overflow-x-auto ${
+          isSticky ? "overflow-x-scroll" : "" // Apply overflow-x-scroll class on mobile only
+        } sm:overflow-x-auto`} // Use overflow-x-auto on small screens for scrollable behavior
+      >
         <li className="px-2 py-1 rounded-sm hover:bg-gray-200 hover:bg-opacity-40 hover:text-black">
           <svg
             xmlns="http://www.w3.org/2000/svg"

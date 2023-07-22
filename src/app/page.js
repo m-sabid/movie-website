@@ -39,8 +39,8 @@ export default function Home() {
   const handleSearch = (searchValue) => {
     const results = searchValue
       ? movieData.filter((movie) =>
-          movie.title.toLowerCase().includes(searchValue.toLowerCase())
-        )
+        movie.title.toLowerCase().includes(searchValue.toLowerCase())
+      )
       : [];
 
     setSearchResults(results);
@@ -64,13 +64,13 @@ export default function Home() {
 
   return (
     <>
-      <div className="min-h-screen">
+      <div className="min-h-screen max-w-full ">
         <MainNav />
         <HeroSection />
         <div className="absolute text-center mt-20 w-full">
           <SearchBarOnHeroSection onSearch={handleSearch} />
         </div>
-        <div className="absolute w-full bottom-0">
+        <div className="absolute w-full bottom-0 overflow-x-hidden">
           <JoinTelegram />
           <SocialLinksForHeroSection />
           <SecondaryNav onSearch={handleSearch} />
@@ -78,19 +78,19 @@ export default function Home() {
       </div>
 
       <div className="container bg-gray-200 mx-auto min-h-screen pb-8">
-        <div className="grid grid-cols-5 gap-4 my-5">
-          <div className="col-span-3 h-[50vh] overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 my-5 p-8">
+          <div className="md:col-span-3 h-[50vh] md:h-[50vh] overflow-hidden">
             <RecentMovieSlider />
           </div>
-          <div className="col-span-2 h-[50vh] overflow-hidden">
+          <div className="md:col-span-1 h-[50vh] md:h-[50vh] overflow-hidden">
             <HowToDownload />
           </div>
         </div>
 
         {filmIndustries?.map((industry, index) => (
           <div key={index}>
-            <MovieCategoryHeader title={industry} className="col-span-5" />
-            <div className="px-5 grid grid-cols-5 gap-4">
+            <MovieCategoryHeader title={industry} className="col-span-1 md:col-span-5" />
+            <div className="px-5 grid grid-cols-1 md:grid-cols-5 gap-4">
               {showNoResults ? (
                 <p>No movie found.</p>
               ) : (
@@ -111,9 +111,8 @@ export default function Home() {
                   {pageNumbers.map((pageNumber) => (
                     <button
                       key={pageNumber}
-                      className={`join-item btn ${
-                        pageNumber === currentPage ? "btn-black" : ""
-                      }`}
+                      className={`join-item btn ${pageNumber === currentPage ? "btn-black" : ""
+                        }`}
                       onClick={() => handlePageClick(pageNumber)}
                     >
                       {pageNumber}
@@ -126,5 +125,6 @@ export default function Home() {
         ))}
       </div>
     </>
+
   );
 }
