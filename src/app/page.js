@@ -12,9 +12,6 @@ import MovieCategoryHeader from "@/components/shared/MovieCategoryHeader";
 import { AllMoviesContext } from "@/providers/data/AllMoviesData";
 import MainNav from "@/components/pages/HomePage/MainNav";
 
-
-
-
 export default function Home() {
   const { movieData, filmIndustries } = useContext(AllMoviesContext);
   const itemsPerPage = 10;
@@ -39,8 +36,8 @@ export default function Home() {
   const handleSearch = (searchValue) => {
     const results = searchValue
       ? movieData.filter((movie) =>
-        movie.title.toLowerCase().includes(searchValue.toLowerCase())
-      )
+          movie.title.toLowerCase().includes(searchValue.toLowerCase())
+        )
       : [];
 
     setSearchResults(results);
@@ -70,15 +67,19 @@ export default function Home() {
         <div className="absolute text-center mt-20 w-full">
           <SearchBarOnHeroSection onSearch={handleSearch} />
         </div>
-        <div className="absolute w-full bottom-0 overflow-x-hidden">
-          <JoinTelegram />
-          <SocialLinksForHeroSection />
-          <SecondaryNav onSearch={handleSearch} />
+        <div className="absolute w-full bottom-0">
+          <div className="md:pb-0 pb-24">
+            <JoinTelegram />
+          </div>
+          <div className="hidden md:flex">
+            <SocialLinksForHeroSection />
+          </div>
+          <SecondaryNav onSearch={handleSearch} />          
         </div>
       </div>
 
       <div className="container bg-gray-200 mx-auto min-h-screen pb-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 my-5 p-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 my-5 p-2 md:p-8">
           <div className="md:col-span-3 h-[50vh] md:h-[50vh] overflow-hidden">
             <RecentMovieSlider />
           </div>
@@ -89,8 +90,11 @@ export default function Home() {
 
         {filmIndustries?.map((industry, index) => (
           <div key={index}>
-            <MovieCategoryHeader title={industry} className="col-span-1 md:col-span-5" />
-            <div className="px-5 grid grid-cols-1 md:grid-cols-5 gap-4">
+            <MovieCategoryHeader
+              title={industry}
+              className="col-span-1 md:col-span-5"
+            />
+            <div className="md:px-5 px-2 grid grid-cols-1 md:grid-cols-5 gap-4">
               {showNoResults ? (
                 <p>No movie found.</p>
               ) : (
@@ -111,8 +115,9 @@ export default function Home() {
                   {pageNumbers.map((pageNumber) => (
                     <button
                       key={pageNumber}
-                      className={`join-item btn ${pageNumber === currentPage ? "btn-black" : ""
-                        }`}
+                      className={`join-item btn ${
+                        pageNumber === currentPage ? "btn-black" : ""
+                      }`}
                       onClick={() => handlePageClick(pageNumber)}
                     >
                       {pageNumber}
@@ -125,6 +130,5 @@ export default function Home() {
         ))}
       </div>
     </>
-
   );
 }

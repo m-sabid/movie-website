@@ -28,9 +28,9 @@ const SocialMediaData = [
 
 const SocialLinksForHeroSection = () => {
   return (
-    <div className="container mb-20 mx-auto flex justify-center items-center ">
+    <div className="container mb-20 mx-auto flex gap-1 justify-center items-center ">
       {SocialMediaData.map((item, index) => (
-        <Link href="/" key={index} className="flex flex-col items-center mx-2 hover:bg-gray-100 hover:bg-opacity-25 hover:rounded-md p-4">
+        <Link href="/" key={index} className="flex flex-wrap flex-col items-center md:mx-2 hover:bg-gray-100 hover:bg-opacity-25 hover:rounded-md md:p-4">
           <p
             className="bg-blue-300 p-2 rounded-md text-center inline-block"
           >
